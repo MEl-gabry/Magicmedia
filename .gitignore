@@ -1,1 +1,7 @@
 **node_modules
+*.log
+*.pot
+*.pyc
+**__pycache__
+main.js
+main.js.LICENSE
