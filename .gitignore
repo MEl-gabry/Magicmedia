@@ -3,3 +3,7 @@
 *.pot
 *.pyc
 __pycache__
+*.woff2
+*.eog
+*.ttf
+*.svg

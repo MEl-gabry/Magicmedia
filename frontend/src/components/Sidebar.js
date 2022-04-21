@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import {Nav, Navbar} from "react-bootstrap";
 
 function Sidebar() {
+    const [isToggled, setToggled] = useState(false);
+    
     return (
         <div>
             <Navbar className="mnb">
