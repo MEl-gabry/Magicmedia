@@ -1,36 +1,45 @@
 import React, {useState} from "react";
 import {Nav, Navbar} from "react-bootstrap";
+import { Link } from 'react-router-dom';
+import { FaBars } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
+import { SidebarData } from "./SidebarData";
+import { IconContext } from 'react-icons';
+import './sidebar-font.css';
 
 function Sidebar() {
-    const [isToggled, setToggled] = useState(false);
+    const [sidebar, toggleSidebar] = useState(false);
+    
+    const showSidebar = () => toggleSidebar(sidebar => !sidebar);
     
     return (
         <div>
-            <Navbar className="mnb">
-                <i className="fa fa-bars" id="msb"/>
-            </Navbar>
-            <Nav className="msb d-none d-md-block bg-light sidebar"
-            activeKey="/home"
-            onSelect={selectedKey => alert(`selected ${selectedKey}`)}
-            >
-                <div className="sidebar-sticky"></div>
-                <Nav.Item>
-                    <Nav.Link href="/login">Active</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="link-1">Link</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="link-2">Link</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="disabled" disabled>
-                    Disabled
-                    </Nav.Link>
-                </Nav.Item>
-            </Nav>
+            <IconContext.Provider value={{color: '#fff'}}>
+                <Link to='#' className='menu-bars'>
+                    <FaBars onClick={showSidebar} style={{color: "#060b26"}} />
+                </Link>
+                <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                    <ul className='nav-menu-items' onClick={showSidebar}>
+                        <li className='navbar-toggle'>
+                            <Link to="#" className='menu-bars'>
+                                <AiOutlineClose />
+                            </Link>
+                        </li>
+                        {SidebarData.map((item, index) => {
+                            return (
+                                <li key={index} className={item.cName}>
+                                    <Link to={item.path}>
+                                        {item.icon}
+                                        <span>{item.title}</span>
+                                    </Link>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </nav>
+            </IconContext.Provider>
         </div>
-    )
+    );
 }
 
 export default Sidebar;

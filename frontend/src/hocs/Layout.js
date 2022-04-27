@@ -11,10 +11,14 @@ function Layout(props) {
     
     return (
         <div>
-            <Sidebar />
+            { props.isAuthenticated && <Sidebar />}
             {props.children}
         </div>
     );
 }
 
-export default connect(null, { checkAuthenticated, load_user })(Layout)
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { checkAuthenticated, load_user })(Layout)
