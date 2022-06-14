@@ -2,6 +2,7 @@
   margin-left: 0.2rem;
   font-size: 2rem;
   background: none;
+  position: fixed;
 }
 
 .nav-menu {
@@ -9,11 +10,12 @@
   width: 250px;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   position: fixed;
   top: 0;
   left: -100%;
   transition: 850ms;
+  z-index: 10;
 }
 
 .nav-menu.active {
@@ -25,7 +27,7 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  padding: 8px 0px 8px 16px;
+  padding: 8px 0px 8px 0px;
   list-style: none;
   height: 60px;
 }
@@ -48,6 +50,7 @@
 
 .nav-menu-items {
   width: 100%;
+  padding-left: 0px;
 }
 
 .navbar-toggle {

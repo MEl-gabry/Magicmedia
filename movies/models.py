@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from .helpers import file_cleanup
+from django.db.models.signals import pre_delete
 
 # Create your models here.
 class UserManager(BaseUserManager):
@@ -53,9 +55,19 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Profile(models.Model):
     name = models.CharField(max_length=20)
-    image = models.ImageField(blank=True, null=True)
+    image = models.ImageField(upload_to='images', blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.email
 
+class Movie(models.Model):
+    name = models.CharField(max_length=20)
+    image = models.ImageField(upload_to='images', blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+
+
+pre_delete.connect(file_cleanup, sender=Profile)

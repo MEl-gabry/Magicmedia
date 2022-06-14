@@ -1,0 +1,16 @@
+:local(.header) {
+    position: relative; 
+    top: 30%
+}
+
+@media (max-height: 900px) {
+    .header {
+        top: 15%
+    }
+}
+
+@media (max-height: 500px) {
+    .header {
+        top: 0%
+    }
+}

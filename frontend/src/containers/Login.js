@@ -21,7 +21,7 @@ function Login({ login, isAuthenticated }) {
     } 
 
     if (isAuthenticated) {
-        return <Navigate to='/'/>
+        return <Navigate to='/profiles' />
     }
     
     return (
@@ -37,11 +37,14 @@ function Login({ login, isAuthenticated }) {
                     <Form.Control type="password" onChange={onChange} placeholder="Password" />
                 </Form.Group>
                 <Button variant="primary" type="submit">
-                    Submit
+                    Login
                 </Button>
             </Form>
             <p>
-                Don't have an account? <Link to='register'>Sign Up</Link>
+                Don't have an account? <Link to='/register'>Sign Up</Link>
+            </p>
+            <p>
+                Forgot your Password? <Link to='/reset-password'>Reset Password</Link>
             </p>
         </Container>
     );

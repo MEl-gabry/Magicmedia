@@ -1,11 +1,10 @@
 import React, {useState} from "react";
-import {Nav, Navbar} from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
 import { IconContext } from 'react-icons';
-import './sidebar-font.css';
+import '../../static/css/sidebar-font.css';
 
 function Sidebar() {
     const [sidebar, toggleSidebar] = useState(false);
@@ -33,7 +32,7 @@ function Sidebar() {
                                         <span>{item.title}</span>
                                     </Link>
                                 </li>
-                            )
+                            );
                         })}
                     </ul>
                 </nav>

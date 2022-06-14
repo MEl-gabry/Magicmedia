@@ -13,6 +13,7 @@ const tokenMiddleware = storeAPI => next => action => {
     const {type, payload} = action;
     if (type === LOGIN_SUCCESS) {
         localStorage.setItem('access', payload.access);
+        localStorage.setItem('refresh', payload.refresh);
     } else if (type === LOGIN_FAIL || type === LOGOUT) {
         localStorage.removeItem('access');
         localStorage.removeItem('refresh');

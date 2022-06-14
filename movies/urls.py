@@ -1,6 +1,10 @@
 from django.urls import path
-from .views import LoginView
+from . import views
 
 urlpatterns = [
-    path('login-token/', LoginView.as_view(), name='login-token')
+    path('login-token/', views.LoginView.as_view()),
+    path('profile', views.ListProfileView.as_view()),
+    path('profiles', views.ProfileListView.as_view()),
+    path('create-profile', views.ProfileCreateView.as_view()),
+    path('update-profile', views.ProfileUpdateView.as_view())
 ]

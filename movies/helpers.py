@@ -1,10 +1,9 @@
-from django.core.validators import validate_email
-from django.core.exceptions import ValidationError
+import os
+from django.conf import settings
 
 
-def validateEmail(email):
-    try:
-        validate_email(email)
-        return True
-    except ValidationError:
-        return False
+def file_cleanup(instance, **kwargs):
+    if instance.image:
+        path = os.path.join(settings.MEDIA_ROOT, instance.image.name)
+        os.remove(path)
+    
