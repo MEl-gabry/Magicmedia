@@ -20,9 +20,8 @@ function ManageProfiles({ user }) {
     const listProfiles = async () => {
         const res = await axios.get(`/api/profiles?email=${user.email}`, config);
         const data = res.data;
-        const firstId = data[0].id;
         setProfileList(data.map(profile => <ListGroup.Item action key={profile.id} id={profile.id} style={{ paddingTop: 50, paddingBottom: 50, maxWidth: 500 }} onClick={onClick}>{profile.name}</ListGroup.Item>));
-        getProfile(firstId);
+        getProfile(data[0].id);
     };
 
     const onClick = e => {

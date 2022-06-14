@@ -11,14 +11,14 @@ function Login({ login, isAuthenticated }) {
     const [inputField, setInputField] = useState({
         email: '',
         password: ''
-    })
+    });
 
     const onChange = event => setInputField(inputField => ({...inputField, [event.target.id]: event.target.value})); 
     const onSubmit = event => {
         event.preventDefault();
 
         login(inputField.email, inputField.password);
-    } 
+    };
 
     if (isAuthenticated) {
         return <Navigate to='/profiles' />

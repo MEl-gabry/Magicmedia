@@ -13,7 +13,7 @@ function Register({ signup, isAuthenticated }) {
         email: '',
         password: '',
         re_password: ''
-    })
+    });
 
     const onChange = event => setInputField(inputField => ({...inputField, [event.target.id]: event.target.value})); 
     const onSubmit = event => {
